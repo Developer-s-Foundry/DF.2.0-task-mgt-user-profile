@@ -7,9 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/server.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
-    "typeorm:ds": "npm run typeorm -- -d ./src/common/configs/database",
+    "typeorm:ds": "npm run typeorm -- -d ./src/common/config/database",
     "migration:generate": "npm run typeorm:ds -- migration:generate",
-    "migration:run": "npm run typeorm:ds -- migration:run"
+    "migration:run": "npm run typeorm:ds -- migration:run",
+    "seed": "ts-node src/seeders/seed.ts"
   },
   "repository": {
     "type": "git",

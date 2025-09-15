@@ -1,9 +1,18 @@
 import express from 'express';
+import { databaseConfig } from './common/config/database';
+import { APP_CONFIGS } from './common/config/index';
 
-(async () => {
-  const app: express.Application = express();
+const app: express.Application = express();
 
-  app.listen(8000, () => {
-    console.log('App is listening on port 8000');
+databaseConfig
+  .initialize()
+  .then(() => {
+    console.log('Connected to DB');
+
+    app.listen(APP_CONFIGS.SERVER_PORT, () => {
+      console.log(`Server running on port ${APP_CONFIGS.SERVER_PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error('DB connection error:', error);
   });
-})();
