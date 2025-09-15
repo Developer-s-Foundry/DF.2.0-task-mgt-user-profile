@@ -51,9 +51,8 @@ export class User {
   })
   // tasks is an array of Task
   tasks?: Relation<Task[]>;
-
-  @OneToMany("TeamMemberShip", "user", {
+  @OneToMany(() => TeamMemberShip, (membership) => membership.user, {
     onDelete: "CASCADE",
   })
-  teamMembership?: Relation<TeamMemberShip[]>;
+  teamMemberships?: Relation<TeamMemberShip[]>;
 }

@@ -15,34 +15,21 @@ export class TeamMemberShip {
   @Column({ type: "text" })
   description?: string;
 
-  // USER
-  @ManyToOne("User", "teammembership", {
+  @ManyToOne(() => User, (user) => user.teamMemberships, {
     onDelete: "CASCADE",
   })
   @JoinColumn({ name: "user_id" })
   user?: User;
 
-  // declare the fk
-  @Column({ type: "uuid", nullable: true })
-  user_id?: string;
-
-  // ROLE
-  @ManyToOne("Role", "teammembership", {
+  @ManyToOne(() => Role, (role) => role.teamMemberships, {
     onDelete: "CASCADE",
   })
   @JoinColumn({ name: "role_id" })
   role?: Role;
 
-  @Column({ type: "uuid", nullable: true })
-  role_id?: string;
-
-  // TEAM
-  @ManyToOne("Role", "teammembership", {
+  @ManyToOne(() => Team, (team) => team.teamMemberships, {
     onDelete: "CASCADE",
   })
-  @JoinColumn({ name: "role_id" })
+  @JoinColumn({ name: "team_id" })
   team?: Team;
-
-  @Column({ type: "uuid", nullable: true })
-  team_id?: string;
 }

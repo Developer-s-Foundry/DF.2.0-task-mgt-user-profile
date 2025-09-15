@@ -2,9 +2,12 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  Relation
 } from "typeorm";
+import { TeamMemberShip } from "./teamMembershipModel";
 
 @Entity()
 export class Team {
@@ -22,4 +25,9 @@ export class Team {
 
   @UpdateDateColumn()
   updated_at?: Date;
+
+  @OneToMany(() => TeamMemberShip, (membership) => membership.team, {
+    onDelete: "CASCADE",
+  })
+  teamMemberships?: Relation<TeamMemberShip[]>;
 }
