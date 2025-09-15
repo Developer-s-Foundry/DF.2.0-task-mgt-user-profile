@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node src/server.ts"
+    "dev": "ts-node src/server.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+    "typeorm:ds": "npm run typeorm -- -d ./src/common/configs/database",
+    "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate src/database/migrations/Migration -d src/common/config/database.ts",
+    "migration:run": "npm run typeorm:ds -- migration:run"
   },
   "repository": {
     "type": "git",
@@ -18,11 +22,16 @@
   },
   "homepage": "https://github.com/Developer-s-Foundry/DF.2.0-task-mgt-user-profile#readme",
   "dependencies": {
+    "dotenv": "^17.2.2",
     "express": "^5.1.0",
+    "pg": "^8.16.3",
     "ts-node": "^10.9.2",
+    "typeorm": "^0.3.26",
     "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "@types/express": "^5.0.3"
+    "@types/express": "^5.0.3",
+    "@types/pg": "^8.15.5",
+    "tsconfig-paths": "^4.2.0"
   }
 }
