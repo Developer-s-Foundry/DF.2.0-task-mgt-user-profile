@@ -1,5 +1,5 @@
 // import the database cursor
-import databaseConfig from "../common/config/database";
+import {databaseConfig} from "../common/config/database";
 import { User } from "../models/userModel";
 import { updateProfileDto } from "../dtos/user.dto";
 

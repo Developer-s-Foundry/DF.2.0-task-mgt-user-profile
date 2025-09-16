@@ -1,9 +1,9 @@
-import express from 'express';
+
 import { databaseConfig } from './common/config/database';
 import { APP_CONFIGS } from './common/config/index';
-import expressConfig from './common/config/express';
+import {expressConfig } from './common/config/express';
 import { RegisterRoutes } from "./build/routes";
-
+import express from 'express';
 
 
 // IIFE
