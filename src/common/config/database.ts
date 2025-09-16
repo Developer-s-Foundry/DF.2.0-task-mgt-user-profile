@@ -1,5 +1,15 @@
 import { DataSource } from "typeorm";
-import { APP_CONFIGS } from ".";
+import APP_CONFIGS from "./index";
+import { User } from "../../models/userModel";
+import { Team } from "../../models/teamModel";
+import { TeamMemberShip } from "../../models/teamMembershipModel";
+import { Role } from "../../models/roleModel";
+import { Task } from "../../models/taskModel";
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const {
   DATABASE_PASSWORD,
@@ -10,7 +20,7 @@ const {
 } = APP_CONFIGS;
 
 // database configuration
-export const databaseConfig = new DataSource({
+const databaseConfig = new DataSource({
   type: "postgres",
   host: `${DATABASE_HOST}`,
   port: parseInt(DATABASE_PORT),
@@ -18,6 +28,9 @@ export const databaseConfig = new DataSource({
   password: DATABASE_PASSWORD,
   database: DATABASE_NAME,
   logging: true,
-  entities: ["src/models/**/*{.ts,.js}"],
-  migrations: ["src/database/migrations/**/*{.ts,.js}"],
+  // entities: ["src/models/**/*{.ts,.js}"],
+  entities: [User, Team, TeamMemberShip, Role, Task],
+  migrations: [__dirname + "/migrations/*.{ts,js}"],
 });
+
+export default databaseConfig;

@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 import { TeamMemberShip } from './teamMembershipModel';
 
+
 @Entity()
 export class Team {
   @PrimaryGeneratedColumn('uuid')

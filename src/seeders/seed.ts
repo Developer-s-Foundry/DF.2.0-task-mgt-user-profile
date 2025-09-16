@@ -54,6 +54,7 @@ if (process.env.NODE_ENV === 'development') {
     } else {
       console.log('Seeding Completed!');
     }
+
     pool.end();
   });
 }
