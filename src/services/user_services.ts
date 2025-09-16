@@ -1,5 +1,5 @@
 import { UserRepository } from "../repositories/user_repository";
-import { updateDto } from "../dtos/user.dto";
+import { updateProfileDto } from "../dtos/user.dto";
 
 import { Request, Response } from 'express';
 
@@ -10,27 +10,17 @@ export class UserService {
   constructor() {
     this.userRepository = new UserRepository();
   }
-
-   async updateProfile(email: string, data: updateDto) {
-        return await this.userRepository.updateProfile(email, data);
-        
+  
+  async updateProfile(id: string, data: updateProfileDto) {
+        return await this.userRepository.updateProfile(id, data);
     }
 
-  async getUserProfile(req: Request, res: Response) {
-    const userId = req.params.id;
-
+  async getUserProfile(userId: string) {
     const userData = await this.userRepository.getUserById(userId);
     if (!userData) {
-      res.status(404).json({
-        status: 'Error',
-        message: 'User not found',
-      });
+        throw new Error('user not found')
     }
 
-    return res.status(200).json({
-      status: 'Success',
-      message: 'User profile retrieved successfully',
-      data: userData,
-    });
+    return userData
   }
 }
