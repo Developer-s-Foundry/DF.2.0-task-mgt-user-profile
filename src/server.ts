@@ -1,7 +1,7 @@
 import express from 'express';
 import { databaseConfig } from './common/config/database';
 import { APP_CONFIGS } from './common/config/index';
-import userRoutes from './routes/user_routes';
+import userRoutes from './controllers/user_controller';
 
 const app: express.Application = express();
 

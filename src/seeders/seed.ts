@@ -1,27 +1,3 @@
-// import { Pool } from 'pg';
-// import * as fs from 'fs';
-// import path from 'path';
-
-// const databaseUrl = process.env.DB_URL;
-// const pool = new Pool({
-//   connectionString: databaseUrl,
-// });
-
-// const __dirname = path.resolve();
-
-// if (process.env.NODE_ENV === 'development') {
-//   let seedQuery = fs.readFileSync(path.join(__dirname, '/data.sql'), {
-//     encoding: 'utf8',
-//   });
-//   pool.query(seedQuery, (err: Error, res: any) => {
-//     console.log(err, res);
-//     console.log('Seeding Completed!');
-//     pool.end();
-//   });
-// }
-
-// src/seeders/seed.ts
-
 import { Pool } from 'pg';
 import * as fs from 'fs';
 import * as path from 'path';
