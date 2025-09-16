@@ -3,5 +3,7 @@ import { UserService } from "../services/user_services"
 
 
 export class UserController {
-    private user
+    private userService = new UserService()
+
+    update
 }
