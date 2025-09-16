@@ -9,7 +9,7 @@ const {
   DATABASE_USERNAME,
 } = APP_CONFIGS;
 
-// database configuration
+// Updated database configuration
 export const databaseConfig = new DataSource({
   type: "postgres",
   host: `${DATABASE_HOST}`,
