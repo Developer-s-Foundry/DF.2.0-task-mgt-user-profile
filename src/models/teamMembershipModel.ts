@@ -1,35 +1,41 @@
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, JoinColumn } from "typeorm";
+import {
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  JoinColumn,
+} from 'typeorm';
 
-import { User } from "./userModel";
-import { Role } from "./roleModel";
-import { Team } from "./teamModel";
+import { User } from './userModel';
+import { Role } from './roleModel';
+import { Team } from './teamModel';
 
 @Entity()
 export class TeamMemberShip {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: "varchar", nullable: false })
+  @Column({ type: 'varchar', nullable: false })
   name!: string;
 
-  @Column({ type: "text" })
+  @Column({ type: 'text' })
   description?: string;
 
   @ManyToOne(() => User, (user) => user.teamMemberships, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "user_id" })
+  @JoinColumn({ name: 'user_id' })
   user?: User;
 
   @ManyToOne(() => Role, (role) => role.teamMemberships, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "role_id" })
+  @JoinColumn({ name: 'role_id' })
   role?: Role;
 
   @ManyToOne(() => Team, (team) => team.teamMemberships, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "team_id" })
+  @JoinColumn({ name: 'team_id' })
   team?: Team;
 }

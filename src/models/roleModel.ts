@@ -4,22 +4,22 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   Relation,
-} from "typeorm";
-import { TeamMemberShip } from "./teamMembershipModel";
+} from 'typeorm';
+import { TeamMemberShip } from './teamMembershipModel';
 
 @Entity()
 export class Role {
-  @PrimaryGeneratedColumn("uuid")
+  @PrimaryGeneratedColumn('uuid')
   id!: string;
 
-  @Column({ type: "varchar" })
+  @Column({ type: 'varchar' })
   name!: string;
 
-  @Column({ type: "text" })
+  @Column({ type: 'text' })
   description?: string;
 
   @OneToMany(() => TeamMemberShip, (membership) => membership.role, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
   teamMemberships?: Relation<TeamMemberShip[]>;
 }

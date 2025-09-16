@@ -1,9 +1,9 @@
-import { Request, Response } from "express"
-import { UserService } from "../services/user_services"
+import { UserService } from '../services/user_services';
+import { Router } from 'express';
 
+const userService = new UserService();
+const router = Router();
 
-export class UserController {
-    private userService = new UserService()
+router.get('/users/:id', (req, res) => userService.getUserProfile(req, res));
 
-    update
-}
+export default router;

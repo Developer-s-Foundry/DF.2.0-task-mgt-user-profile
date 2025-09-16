@@ -1,5 +1,9 @@
 -- First clean up (truncate all tables)
+<<<<<<< HEAD
 TRUNCATE TABLE "task", "team_membership", "role", "team", "user" RESTART IDENTITY CASCADE;
+=======
+TRUNCATE TABLE "task", "team_member_ship", "role", "team", "user" RESTART IDENTITY CASCADE;
+>>>>>>> main
 
 -- USERS
 INSERT INTO "user" (
@@ -25,7 +29,11 @@ INSERT INTO "role" (
 (uuid_generate_v4(), 'Designer', 'Designs UI/UX and branding materials.');
 
 -- TEAM MEMBERSHIPS
+<<<<<<< HEAD
 INSERT INTO "team_membership" (
+=======
+INSERT INTO "team_member_ship" (
+>>>>>>> main
   id, name, description, user_id, team_id, role_id
 ) VALUES
 (uuid_generate_v4(), 'John in Engineering', 'Backend developer in Engineering team.', 
@@ -54,4 +62,8 @@ INSERT INTO "task" (
  (SELECT id FROM "user" WHERE user_name = 'asmith')),
 
 (uuid_generate_v4(), 'Deploy App', 'Deploy app to production environment.',
+<<<<<<< HEAD
  (SELECT id FROM "user" WHERE user_name = 'admin'));
+=======
+ (SELECT id FROM "user" WHERE user_name = 'admin'));
+>>>>>>> main

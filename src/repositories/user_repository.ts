@@ -3,6 +3,7 @@ import databaseConfig from "../common/config/database";
 import { User } from "../models/userModel";
 import { updateDto } from "../dtos/user.dto";
 
+
 const userRepo = databaseConfig.getRepository(User);
 
 export class UserRepository {
@@ -21,4 +22,8 @@ export class UserRepository {
         return user
     }
     
+
+  async getUserById(id: string): Promise<User | null> {
+    return await userRepo.findOne({ where: { id } });
+  }
 }

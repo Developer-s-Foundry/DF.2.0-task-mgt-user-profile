@@ -19,9 +19,9 @@ const {
   DATABASE_USERNAME,
 } = APP_CONFIGS;
 
-// database configuration
-const databaseConfig = new DataSource({
-  type: "postgres",
+// Updated database configuration
+export const databaseConfig = new DataSource({
+  type: "mysql",
   host: `${DATABASE_HOST}`,
   port: parseInt(DATABASE_PORT),
   username: DATABASE_USERNAME,

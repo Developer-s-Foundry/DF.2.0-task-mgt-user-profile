@@ -7,9 +7,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/server.ts",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
+<<<<<<< HEAD
     "typeorm:ds": "npm run typeorm -- -d ./src/common/configs/database",
     "migration:generate": "ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js migration:generate src/database/migrations/Migration -d src/common/config/database.ts",
     "migration:run": "npm run typeorm:ds -- migration:run"
+=======
+    "typeorm:ds": "npm run typeorm -- -d ./src/common/config/database",
+    "migration:generate": "npm run typeorm:ds -- migration:generate",
+    "migration:run": "npm run typeorm:ds -- migration:run",
+    "seed": "ts-node src/seeders/seed.ts"
+>>>>>>> main
   },
   "repository": {
     "type": "git",
@@ -24,9 +31,14 @@
   "dependencies": {
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
+<<<<<<< HEAD
     "pg": "^8.16.3",
     "ts-node": "^10.9.2",
     "tsoa": "^6.6.0",
+=======
+    "mysql": "^2.18.1",
+    "ts-node": "^10.9.2",
+>>>>>>> main
     "typeorm": "^0.3.26",
     "typescript": "^5.9.2"
   },
