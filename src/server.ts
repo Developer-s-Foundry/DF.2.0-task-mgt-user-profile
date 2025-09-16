@@ -12,6 +12,7 @@ databaseConfig
 
     app.use('/', userRoutes);
 
+
     app.listen(APP_CONFIGS.SERVER_PORT, () => {
       console.log(`Server running on port ${APP_CONFIGS.SERVER_PORT}`);
     });

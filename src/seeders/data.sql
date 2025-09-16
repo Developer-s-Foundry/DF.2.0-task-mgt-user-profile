@@ -1,6 +1,7 @@
 -- First clean up (truncate all tables)
 TRUNCATE TABLE "task", "team_member_ship", "role", "team", "user" RESTART IDENTITY CASCADE;
 
+
 -- USERS
 INSERT INTO "user" (
   id, user_name, first_name, last_name, email, password, is_verified, is_active, is_staff, date_joined, "lastLogin"
@@ -55,3 +56,4 @@ INSERT INTO "task" (
 
 (uuid_generate_v4(), 'Deploy App', 'Deploy app to production environment.',
  (SELECT id FROM "user" WHERE user_name = 'admin'));
+
