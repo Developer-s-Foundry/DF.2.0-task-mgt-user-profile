@@ -313,10 +313,10 @@
 		},
 		"/team/{userId}": {
 			"get": {
-				"operationId": "GetTask",
+				"operationId": "GetTeam",
 				"responses": {
 					"200": {
-						"description": "fetch task successful",
+						"description": "fetch team successful",
 						"content": {
 							"application/json": {
 								"schema": {
