@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "tsoa:build": "tsoa spec-and-routes", 
+    "tsoa:build": "tsoa spec-and-routes",
     "typeorm": "ts-node ./node_modules/typeorm/cli.js",
     "typeorm:ds": "npm run typeorm -- -d ./src/common/config/database",
     "migration:generate": "npm run typeorm:ds -- migration:generate",
@@ -27,6 +27,7 @@
     "dotenv": "^17.2.2",
     "express": "^5.1.0",
     "mysql": "^2.18.1",
+    "pg": "^8.16.3",
     "ts-node": "^10.9.2",
     "tsoa": "^6.6.0",
     "typeorm": "^0.3.26",

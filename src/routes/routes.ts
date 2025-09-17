@@ -4,7 +4,9 @@
 import type { TsoaRoute } from '@tsoa/runtime';
 import {  fetchMiddlewares, ExpressTemplateService } from '@tsoa/runtime';
 // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-import { UserController } from '../controllers/user_controller';
+import { UserController } from './../controllers/user_controller';
+// WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+import { TaskController } from './../controllers/task_controller';
 import type { Request as ExRequest, Response as ExResponse, RequestHandler, Router } from 'express';
 
 
@@ -108,6 +110,14 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "GetTaskError": {
+        "dataType": "refObject",
+        "properties": {
+            "message": {"dataType":"enum","enums":["Task not found"],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 };
 const templateService = new ExpressTemplateService(models, {"noImplicitAdditionalProperties":"throw-on-extras","bodyCoercion":true});
 
@@ -175,6 +185,66 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'getUser',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: 200,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTaskController_getTask: Record<string, TsoaRoute.ParameterSchema> = {
+                taskId: {"in":"path","name":"taskId","required":true,"dataType":"string"},
+        };
+        app.get('/task/:taskId',
+            ...(fetchMiddlewares<RequestHandler>(TaskController)),
+            ...(fetchMiddlewares<RequestHandler>(TaskController.prototype.getTask)),
+
+            async function TaskController_getTask(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTaskController_getTask, request, response });
+
+                const controller = new TaskController();
+
+              await templateService.apiHandler({
+                methodName: 'getTask',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: 200,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTaskController_getUserTask: Record<string, TsoaRoute.ParameterSchema> = {
+                userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
+        };
+        app.get('/task/:userId/user',
+            ...(fetchMiddlewares<RequestHandler>(TaskController)),
+            ...(fetchMiddlewares<RequestHandler>(TaskController.prototype.getUserTask)),
+
+            async function TaskController_getUserTask(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTaskController_getUserTask, request, response });
+
+                const controller = new TaskController();
+
+              await templateService.apiHandler({
+                methodName: 'getUserTask',
                 controller,
                 response,
                 next,

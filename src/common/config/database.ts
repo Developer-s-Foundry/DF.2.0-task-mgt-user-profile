@@ -1,5 +1,5 @@
-import { DataSource } from "typeorm";
-import { APP_CONFIGS } from ".";
+import { DataSource } from 'typeorm';
+import { APP_CONFIGS } from '.';
 
 const {
   DATABASE_PASSWORD,
@@ -11,13 +11,13 @@ const {
 
 // Updated database configuration
 export const databaseConfig = new DataSource({
-  type: "mysql",
+  type: 'postgres',
   host: `${DATABASE_HOST}`,
   port: parseInt(DATABASE_PORT),
   username: DATABASE_USERNAME,
   password: DATABASE_PASSWORD,
   database: DATABASE_NAME,
   logging: true,
-  entities: ["src/models/**/*{.ts,.js}"],
-  migrations: ["src/database/migrations/**/*{.ts,.js}"],
+  entities: ['src/models/**/*{.ts,.js}'],
+  migrations: ['src/database/migrations/**/*{.ts,.js}'],
 });
