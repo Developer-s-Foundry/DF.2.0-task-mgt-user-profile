@@ -311,16 +311,19 @@
 				]
 			}
 		},
-		"/task/{userId}": {
+		"/team/{userId}": {
 			"get": {
-				"operationId": "GetTask",
+				"operationId": "GetTeam",
 				"responses": {
 					"200": {
-						"description": "fetch task successful",
+						"description": "fetch team successful",
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Team"
+									"items": {
+										"$ref": "#/components/schemas/Team"
+									},
+									"type": "array"
 								}
 							}
 						}

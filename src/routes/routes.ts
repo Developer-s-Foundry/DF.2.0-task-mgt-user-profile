@@ -198,25 +198,25 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsTeamController_getTask: Record<string, TsoaRoute.ParameterSchema> = {
+        const argsTeamController_getTeam: Record<string, TsoaRoute.ParameterSchema> = {
                 userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
         };
-        app.get('/task/:userId',
+        app.get('/team/:userId',
             ...(fetchMiddlewares<RequestHandler>(TeamController)),
-            ...(fetchMiddlewares<RequestHandler>(TeamController.prototype.getTask)),
+            ...(fetchMiddlewares<RequestHandler>(TeamController.prototype.getTeam)),
 
-            async function TeamController_getTask(request: ExRequest, response: ExResponse, next: any) {
+            async function TeamController_getTeam(request: ExRequest, response: ExResponse, next: any) {
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
             let validatedArgs: any[] = [];
             try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsTeamController_getTask, request, response });
+                validatedArgs = templateService.getValidatedArgs({ args: argsTeamController_getTeam, request, response });
 
                 const controller = new TeamController();
 
               await templateService.apiHandler({
-                methodName: 'getTask',
+                methodName: 'getTeam',
                 controller,
                 response,
                 next,
