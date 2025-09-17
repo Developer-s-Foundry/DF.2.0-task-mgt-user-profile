@@ -28,6 +28,7 @@
     "express": "^5.1.0",
     "mysql": "^2.18.1",
     "pg": "^8.16.3",
+    "swagger-ui-express": "^5.0.1",
     "ts-node": "^10.9.2",
     "tsoa": "^6.6.0",
     "typeorm": "^0.3.26",
@@ -36,6 +37,7 @@
   "devDependencies": {
     "@types/express": "^5.0.3",
     "@types/pg": "^8.15.5",
+    "@types/swagger-ui-express": "^4.1.8",
     "tsconfig-paths": "^4.2.0"
   }
 }

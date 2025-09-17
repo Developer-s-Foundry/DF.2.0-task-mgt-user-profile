@@ -396,7 +396,7 @@
 				"operationId": "GetUser",
 				"responses": {
 					"200": {
-						"description": "fetch user succesful",
+						"description": "fetch user successful",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -411,6 +411,47 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/GetUserError"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/team/{userId}": {
+			"get": {
+				"operationId": "GetTeam",
+				"responses": {
+					"200": {
+						"description": "fetch team successful",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Team"
+									},
+									"type": "array"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "you are not in a team",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetTaskError"
 								}
 							}
 						}
