@@ -2,11 +2,14 @@ import { databaseConfig } from './common/config/database';
 import { APP_CONFIGS } from './common/config/index';
 import { expressConfig } from './common/config/express';
 import express from 'express';
+import { ErrorRequestHandler } from 'express';
+import { errorHandler } from './middlewares/errorMiddleware';
 
 // IIFE
 (async () => {
   const app: express.Application = express();
   expressConfig(app);
+  app.use(errorHandler as ErrorRequestHandler);
   databaseConfig
     .initialize()
     .then(() => {
