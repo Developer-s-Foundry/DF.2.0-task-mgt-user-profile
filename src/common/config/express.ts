@@ -1,4 +1,4 @@
-import { Application, json, urlencoded} from "express";
+import { Application, json, urlencoded } from "express";
 
 
 export const expressConfig = async (app: Application): Promise<void> => {
