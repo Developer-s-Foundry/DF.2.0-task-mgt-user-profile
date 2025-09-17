@@ -31,7 +31,7 @@ export class UserController extends Controller {
   }
 
   @Response<GetUserError>('default', 'user not found')
-  @SuccessResponse(200, 'fetch user succesful')
+  @SuccessResponse(200, 'fetch user successful')
   @Get('{userId}')
   public async getUser(@Path() userId: string) {
     const user = await this.userService.getUserProfile(userId);
