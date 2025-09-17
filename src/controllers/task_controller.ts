@@ -10,6 +10,7 @@ import {
   SuccessResponse,
 } from 'tsoa';
 import { GetTaskError } from '../dtos/error.dto';
+import { ResponseHandler } from '../utils/response';
 
 @Route('/task')
 export class TaskController extends Controller {
@@ -25,8 +26,12 @@ export class TaskController extends Controller {
   @Get('{taskId}')
   public async getTask(@Path() taskId: string) {
     const task = await this.taskService.getTaskById(taskId);
-    this.setStatus(200);
-    return task;
+     return new ResponseHandler({
+       data: task,
+       message: "Task successfully fetched",
+       statusCode: this.setStatus(200),
+       status: "success",
+     });
   }
 
   @Response<GetTaskError>('default', 'task not found')
@@ -34,7 +39,11 @@ export class TaskController extends Controller {
   @Get('{userId}/user')
   public async getUserTask(@Path() userId: string) {
     const task = await this.taskService.getUserTask(userId);
-    this.setStatus(200);
-    return task;
+    return new ResponseHandler({
+      data: task,
+      message: "User task successfully fetched",
+      statusCode: this.setStatus(200),
+      status: "success",
+    });
   }
 }

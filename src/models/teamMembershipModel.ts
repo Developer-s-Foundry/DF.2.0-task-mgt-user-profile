@@ -10,7 +10,7 @@ import { User } from './userModel';
 import { Role } from './roleModel';
 import { Team } from './teamModel';
 
-@Entity()
+@Entity("team_membership")
 export class TeamMemberShip {
   @PrimaryGeneratedColumn('uuid')
   id!: string;
