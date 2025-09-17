@@ -278,7 +278,7 @@
 				"operationId": "GetUser",
 				"responses": {
 					"200": {
-						"description": "fetch user succesful",
+						"description": "fetch user successful",
 						"content": {
 							"application/json": {
 								"schema": {

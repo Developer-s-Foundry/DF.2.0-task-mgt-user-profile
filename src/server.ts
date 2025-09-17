@@ -1,14 +1,12 @@
 import { databaseConfig } from './common/config/database';
 import { APP_CONFIGS } from './common/config/index';
 import { expressConfig } from './common/config/express';
-import { RegisterRoutes } from './routes/routes';
 import express from 'express';
 
 // IIFE
 (async () => {
   const app: express.Application = express();
   expressConfig(app);
-  RegisterRoutes(app);
   databaseConfig
     .initialize()
     .then(() => {
