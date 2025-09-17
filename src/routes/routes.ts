@@ -93,11 +93,44 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ApiResponseUpdateUser": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"ref":"User","required":true},
+            "message": {"dataType":"string","required":true},
+            "statusCode": {"dataType":"double","required":true},
+            "status": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["success"]},{"dataType":"enum","enums":["error"]}],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "updateProfileDto": {
         "dataType": "refObject",
         "properties": {
             "first_name": {"dataType":"string"},
             "last_name": {"dataType":"string"},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Record_string.any_": {
+        "dataType": "refAlias",
+        "type": {"dataType":"nestedObjectLiteral","nestedProperties":{},"additionalProperties":{"dataType":"any"},"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "Meta": {
+        "dataType": "refAlias",
+        "type": {"dataType":"union","subSchemas":[{"ref":"Record_string.any_"},{"dataType":"enum","enums":[null]}],"validators":{}},
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResponseHandler_User_": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"dataType":"any","required":true},
+            "message": {"dataType":"string","required":true},
+            "statusCode": {"dataType":"double","required":true},
+            "status": {"dataType":"any","required":true},
+            "meta": {"ref":"Meta","required":true},
         },
         "additionalProperties": false,
     },
@@ -110,10 +143,34 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResponseHandler_Task_": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"dataType":"any","required":true},
+            "message": {"dataType":"string","required":true},
+            "statusCode": {"dataType":"double","required":true},
+            "status": {"dataType":"any","required":true},
+            "meta": {"ref":"Meta","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "GetTaskError": {
         "dataType": "refObject",
         "properties": {
             "message": {"dataType":"enum","enums":["Task not found"],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResponseHandler_Task-Array_": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"dataType":"any","required":true},
+            "message": {"dataType":"string","required":true},
+            "statusCode": {"dataType":"double","required":true},
+            "status": {"dataType":"any","required":true},
+            "meta": {"ref":"Meta","required":true},
         },
         "additionalProperties": false,
     },

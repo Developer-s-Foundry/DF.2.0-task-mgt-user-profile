@@ -181,6 +181,35 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ApiResponseUpdateUser": {
+				"properties": {
+					"data": {
+						"$ref": "#/components/schemas/User"
+					},
+					"message": {
+						"type": "string"
+					},
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"success",
+							"error"
+						]
+					}
+				},
+				"required": [
+					"data",
+					"message",
+					"statusCode",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"updateProfileDto": {
 				"properties": {
 					"first_name": {
@@ -190,6 +219,45 @@
 						"type": "string"
 					}
 				},
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Record_string.any_": {
+				"properties": {},
+				"additionalProperties": {},
+				"type": "object",
+				"description": "Construct a type with a set of properties K of type T"
+			},
+			"Meta": {
+				"allOf": [
+					{
+						"$ref": "#/components/schemas/Record_string.any_"
+					}
+				],
+				"nullable": true
+			},
+			"ResponseHandler_User_": {
+				"properties": {
+					"data": {},
+					"message": {
+						"type": "string"
+					},
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {},
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					}
+				},
+				"required": [
+					"data",
+					"message",
+					"statusCode",
+					"status",
+					"meta"
+				],
 				"type": "object",
 				"additionalProperties": false
 			},
@@ -209,6 +277,31 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ResponseHandler_Task_": {
+				"properties": {
+					"data": {},
+					"message": {
+						"type": "string"
+					},
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {},
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					}
+				},
+				"required": [
+					"data",
+					"message",
+					"statusCode",
+					"status",
+					"meta"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"GetTaskError": {
 				"properties": {
 					"message": {
@@ -221,6 +314,31 @@
 				},
 				"required": [
 					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResponseHandler_Task-Array_": {
+				"properties": {
+					"data": {},
+					"message": {
+						"type": "string"
+					},
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {},
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					}
+				},
+				"required": [
+					"data",
+					"message",
+					"statusCode",
+					"status",
+					"meta"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -246,7 +364,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/User"
+									"$ref": "#/components/schemas/ApiResponseUpdateUser"
 								}
 							}
 						}
@@ -282,7 +400,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/User"
+									"$ref": "#/components/schemas/ResponseHandler_User_"
 								}
 							}
 						}
@@ -320,7 +438,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Task"
+									"$ref": "#/components/schemas/ResponseHandler_Task_"
 								}
 							}
 						}
@@ -358,10 +476,7 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"items": {
-										"$ref": "#/components/schemas/Task"
-									},
-									"type": "array"
+									"$ref": "#/components/schemas/ResponseHandler_Task-Array_"
 								}
 							}
 						}
