@@ -208,6 +208,22 @@
 				],
 				"type": "object",
 				"additionalProperties": false
+			},
+			"GetTaskError": {
+				"properties": {
+					"message": {
+						"type": "string",
+						"enum": [
+							"Task not found"
+						],
+						"nullable": false
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
 			}
 		},
 		"securitySchemes": {}
@@ -277,6 +293,85 @@
 							"application/json": {
 								"schema": {
 									"$ref": "#/components/schemas/GetUserError"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/task/{taskId}": {
+			"get": {
+				"operationId": "GetTask",
+				"responses": {
+					"200": {
+						"description": "fetch task successful",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Task"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "task not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetTaskError"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "taskId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/task/{userId}/user": {
+			"get": {
+				"operationId": "GetUserTask",
+				"responses": {
+					"200": {
+						"description": "fetch task successful",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Task"
+									},
+									"type": "array"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "task not found",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetTaskError"
 								}
 							}
 						}
