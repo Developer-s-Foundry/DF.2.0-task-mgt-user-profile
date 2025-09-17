@@ -201,7 +201,7 @@ export function RegisterRoutes(app: Router) {
         const argsTeamController_getTask: Record<string, TsoaRoute.ParameterSchema> = {
                 userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
         };
-        app.get('/task/:userId',
+        app.get('/team/:userId',
             ...(fetchMiddlewares<RequestHandler>(TeamController)),
             ...(fetchMiddlewares<RequestHandler>(TeamController.prototype.getTask)),
 

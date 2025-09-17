@@ -311,7 +311,7 @@
 				]
 			}
 		},
-		"/task/{userId}": {
+		"/team/{userId}": {
 			"get": {
 				"operationId": "GetTask",
 				"responses": {
@@ -320,7 +320,10 @@
 						"content": {
 							"application/json": {
 								"schema": {
-									"$ref": "#/components/schemas/Team"
+									"items": {
+										"$ref": "#/components/schemas/Team"
+									},
+									"type": "array"
 								}
 							}
 						}

@@ -1,15 +1,8 @@
 import { TeamService } from '../services/team_services';
-import {
-  Controller,
-  Get,
-  Path,
-  Route,
-  Response,
-  SuccessResponse,
-} from 'tsoa';
+import { Controller, Get, Path, Route, Response, SuccessResponse } from 'tsoa';
 import { GetTaskError } from '../dtos/error.dto';
 
-@Route('/task')
+@Route('/team')
 export class TeamController extends Controller {
   private teamService = new TeamService();
 
