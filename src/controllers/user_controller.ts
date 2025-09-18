@@ -8,10 +8,15 @@ import {
   Route,
   Response,
   SuccessResponse,
-} from "tsoa";
-import { User } from "../models/userModel";
-import { updateProfileDto } from "../dtos/user.dto";
-import { GetUserError, ChangePasswordError } from "../dtos/error.dto";
+  Post,
+} from 'tsoa';
+import { updateProfileDto } from '../dtos/user.dto';
+import { GetUserError, ChangePasswordError } from '../dtos/error.dto';
+import APP_CONFIGS from '../common/config';
+import Mailjet from 'node-mailjet';
+import crypto from 'node:crypto'
+
+
 import { ResponseHandler } from "../utils/response";
 import { ApiResponseUpdateUser, changePasswordDto } from "../dtos/user.dto";
 
@@ -53,26 +58,4 @@ export class UserController extends Controller {
     });
 
     return response;
-  }
-  @Response<ChangePasswordError>(
-    "default",
-    "user not found or invalid password"
-  )
-  @SuccessResponse(200, "Password changed successfully")
-  @Patch("{userId}/change-password")
-  public async changePassword(
-    @Path() userId: string,
-    @Body() body: changePasswordDto
-  ) {
-    await this.userService.changeUserPassword(userId, body);
-
-    const response = new ResponseHandler({
-      data: null,
-      message: "Password updated successfully",
-      statusCode: this.setStatus(200),
-      status: "success",
-    });
-
-    return response;
-  }
-}
+  }}

@@ -25,6 +25,8 @@ const models: TsoaRoute.Models = {
             "last_name": {"dataType":"string","required":true},
             "email": {"dataType":"string","required":true},
             "password": {"dataType":"string","required":true},
+            "reset_token_hash": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"enum","enums":[null]}]},
+            "reset_token_expiry": {"dataType":"union","subSchemas":[{"dataType":"datetime"},{"dataType":"enum","enums":[null]}]},
             "is_verified": {"dataType":"string"},
             "is_active": {"dataType":"string"},
             "is_staff": {"dataType":"string"},
