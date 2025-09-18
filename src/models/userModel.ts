@@ -29,6 +29,12 @@ export class User {
   @Column({ type: 'varchar', nullable: false, select: false })
   password!: string;
 
+  @Column({type: 'varchar', nullable: true})
+  reset_token_hash?: string | null
+
+  @Column({type: 'timestamp', nullable: true})
+  reset_token_expiry?: Date | null
+
   @Column({ type: 'boolean' })
   is_verified?: string;
 
