@@ -1,6 +1,7 @@
-import { databaseConfig } from '../common/config/database';
-import { Team } from '../models/teamModel';
-import { User } from '../models/userModel';
+import { databaseConfig } from "../common/config/database";
+import { Team } from "../models/teamModel";
+import { User } from "../models/userModel";
+import { AppError } from "../utils/appError";
 
 const teamRepo = databaseConfig.getRepository(Team);
 const userRepo = databaseConfig.getRepository(User);
@@ -12,7 +13,12 @@ export class TeamRepository {
       id: userId,
     });
     if (!user) {
-      throw new Error('user does not exist');
+      throw new AppError({
+        message: "User not found",
+        statusCode: 404,
+        isOperational: false,
+        type: "fail",
+      });
     }
     const teamData = await teamRepo.find({
       relations: {
@@ -29,8 +35,13 @@ export class TeamRepository {
         },
       },
     });
-    if (!teamData) {
-      throw new Error('team data does not exist');
+    if (!user) {
+      throw new AppError({
+        message: "Team not found",
+        statusCode: 404,
+        isOperational: false,
+        type: "fail",
+      });
     }
     return teamData;
   }
