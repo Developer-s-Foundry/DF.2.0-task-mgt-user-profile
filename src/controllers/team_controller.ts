@@ -9,7 +9,7 @@ import {
 } from 'tsoa';
 import { GetTaskError } from '../dtos/error.dto';
 
-@Route('/task')
+@Route('/team')
 export class TeamController extends Controller {
   private teamService = new TeamService();
 
@@ -21,7 +21,7 @@ export class TeamController extends Controller {
   @Response<GetTaskError>('default', 'you are not in a team')
   @SuccessResponse(200, 'fetch task successful')
   @Get('{userId}')
-  public async getTask(@Path() userId: string) {
+  public async getTeam(@Path() userId: string) {
     const teamData = await this.teamService.getTeamData(userId);
     this.setStatus(200);
     return teamData;

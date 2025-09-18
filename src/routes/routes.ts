@@ -25,6 +25,8 @@ const models: TsoaRoute.Models = {
             "last_name": {"dataType":"string","required":true},
             "email": {"dataType":"string","required":true},
             "password": {"dataType":"string","required":true},
+            "reset_token_hash": {"dataType":"union","subSchemas":[{"dataType":"string"},{"dataType":"enum","enums":[null]}]},
+            "reset_token_expiry": {"dataType":"union","subSchemas":[{"dataType":"datetime"},{"dataType":"enum","enums":[null]}]},
             "is_verified": {"dataType":"string"},
             "is_active": {"dataType":"string"},
             "is_staff": {"dataType":"string"},
@@ -198,25 +200,115 @@ export function RegisterRoutes(app: Router) {
             }
         });
         // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-        const argsTeamController_getTask: Record<string, TsoaRoute.ParameterSchema> = {
-                userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
+        const argsUserController_generatePasswordReset: Record<string, TsoaRoute.ParameterSchema> = {
+                email: {"in":"body","name":"email","required":true,"dataType":"string"},
         };
-        app.get('/task/:userId',
-            ...(fetchMiddlewares<RequestHandler>(TeamController)),
-            ...(fetchMiddlewares<RequestHandler>(TeamController.prototype.getTask)),
+        app.post('/user/generate-reset-password-token',
+            ...(fetchMiddlewares<RequestHandler>(UserController)),
+            ...(fetchMiddlewares<RequestHandler>(UserController.prototype.generatePasswordReset)),
 
-            async function TeamController_getTask(request: ExRequest, response: ExResponse, next: any) {
+            async function UserController_generatePasswordReset(request: ExRequest, response: ExResponse, next: any) {
 
             // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
 
             let validatedArgs: any[] = [];
             try {
-                validatedArgs = templateService.getValidatedArgs({ args: argsTeamController_getTask, request, response });
+                validatedArgs = templateService.getValidatedArgs({ args: argsUserController_generatePasswordReset, request, response });
+
+                const controller = new UserController();
+
+              await templateService.apiHandler({
+                methodName: 'generatePasswordReset',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsUserController_verifyPasswordToken: Record<string, TsoaRoute.ParameterSchema> = {
+                requestdto: {"in":"body","name":"requestdto","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"token":{"dataType":"string","required":true},"email":{"dataType":"string","required":true}}},
+        };
+        app.post('/user/verify-reset-password-token',
+            ...(fetchMiddlewares<RequestHandler>(UserController)),
+            ...(fetchMiddlewares<RequestHandler>(UserController.prototype.verifyPasswordToken)),
+
+            async function UserController_verifyPasswordToken(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsUserController_verifyPasswordToken, request, response });
+
+                const controller = new UserController();
+
+              await templateService.apiHandler({
+                methodName: 'verifyPasswordToken',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsUserController_resetPassword: Record<string, TsoaRoute.ParameterSchema> = {
+                requestdto: {"in":"body","name":"requestdto","required":true,"dataType":"nestedObjectLiteral","nestedProperties":{"password":{"dataType":"string","required":true},"email":{"dataType":"string","required":true}}},
+        };
+        app.post('/user/reset-password',
+            ...(fetchMiddlewares<RequestHandler>(UserController)),
+            ...(fetchMiddlewares<RequestHandler>(UserController.prototype.resetPassword)),
+
+            async function UserController_resetPassword(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsUserController_resetPassword, request, response });
+
+                const controller = new UserController();
+
+              await templateService.apiHandler({
+                methodName: 'resetPassword',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: undefined,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsTeamController_getTeam: Record<string, TsoaRoute.ParameterSchema> = {
+                userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
+        };
+        app.get('/team/:userId',
+            ...(fetchMiddlewares<RequestHandler>(TeamController)),
+            ...(fetchMiddlewares<RequestHandler>(TeamController.prototype.getTeam)),
+
+            async function TeamController_getTeam(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsTeamController_getTeam, request, response });
 
                 const controller = new TeamController();
 
               await templateService.apiHandler({
-                methodName: 'getTask',
+                methodName: 'getTeam',
                 controller,
                 response,
                 next,
