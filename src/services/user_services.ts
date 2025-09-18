@@ -1,6 +1,7 @@
 import { UserRepository } from '../repositories/user_repository';
 import { updateDto, updateProfileDto } from '../dtos/user.dto';
 
+
 export class UserService {
   private userRepository = new UserRepository();
 
@@ -18,7 +19,7 @@ export class UserService {
   async getUserProfile(userId: string) {
     const userData = await this.userRepository.getUserById(userId);
     if (!userData) {
-      throw new Error('user not found');
+      throw new Error("user not found");
     }
     return userData;
   }

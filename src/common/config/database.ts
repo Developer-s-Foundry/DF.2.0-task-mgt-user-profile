@@ -11,7 +11,7 @@ const {
 
 // Updated database configuration
 export const databaseConfig = new DataSource({
-  type: 'mysql',
+  type: 'postgres',
   host: `${DATABASE_HOST}`,
   port: parseInt(DATABASE_PORT),
   username: DATABASE_USERNAME,

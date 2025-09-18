@@ -1,4 +1,4 @@
-import { Application, json, urlencoded} from "express";
+import { Application, json, urlencoded } from "express";
 import { RegisterRoutes } from "../../routes/routes";
 import express, { Response as ExResponse, Request as ExRequest } from "express";
 import swaggerUi from "swagger-ui-express";

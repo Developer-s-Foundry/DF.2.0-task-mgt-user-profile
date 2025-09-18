@@ -10,6 +10,7 @@ export class TaskService {
   async getTaskById(taskId: string) {
     const taskData = await this.taskRepository.getTaskById(taskId);
     if (!taskData) {
+      console.log(13)
       throw new Error('task not found');
     }
 
