@@ -17,6 +17,7 @@ export class TaskRepository {
           message: "Task not found",
           statusCode: 404,
           isOperational: false,
+          type: "fail",
         });
       }
       return data;
@@ -46,6 +47,7 @@ export class TaskRepository {
           message: "User not found",
           statusCode: 404,
           isOperational: false,
+          type: "fail",
         });
       }
       return data;

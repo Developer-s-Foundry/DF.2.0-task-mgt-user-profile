@@ -145,7 +145,7 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
-    "ResponseHandler_Task_": {
+    "ResponseHandler_any_": {
         "dataType": "refObject",
         "properties": {
             "data": {"dataType":"any","required":true},
@@ -157,10 +157,41 @@ const models: TsoaRoute.Models = {
         "additionalProperties": false,
     },
     // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ChangePasswordError": {
+        "dataType": "refObject",
+        "properties": {
+            "message": {"dataType":"string","required":true},
+            "statusCode": {"dataType":"double","required":true},
+            "status": {"dataType":"union","subSchemas":[{"dataType":"enum","enums":["fail"]},{"dataType":"enum","enums":["error"]}],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "changePasswordDto": {
+        "dataType": "refObject",
+        "properties": {
+            "oldPassword": {"dataType":"string","required":true},
+            "newPassword": {"dataType":"string","required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
     "GetTaskError": {
         "dataType": "refObject",
         "properties": {
             "message": {"dataType":"enum","enums":["Task not found"],"required":true},
+        },
+        "additionalProperties": false,
+    },
+    // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+    "ResponseHandler_Task_": {
+        "dataType": "refObject",
+        "properties": {
+            "data": {"dataType":"any","required":true},
+            "message": {"dataType":"string","required":true},
+            "statusCode": {"dataType":"double","required":true},
+            "status": {"dataType":"any","required":true},
+            "meta": {"ref":"Meta","required":true},
         },
         "additionalProperties": false,
     },
@@ -244,6 +275,37 @@ export function RegisterRoutes(app: Router) {
 
               await templateService.apiHandler({
                 methodName: 'getUser',
+                controller,
+                response,
+                next,
+                validatedArgs,
+                successStatus: 200,
+              });
+            } catch (err) {
+                return next(err);
+            }
+        });
+        // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+        const argsUserController_changePassword: Record<string, TsoaRoute.ParameterSchema> = {
+                userId: {"in":"path","name":"userId","required":true,"dataType":"string"},
+                body: {"in":"body","name":"body","required":true,"ref":"changePasswordDto"},
+        };
+        app.patch('/user/:userId/change-password',
+            ...(fetchMiddlewares<RequestHandler>(UserController)),
+            ...(fetchMiddlewares<RequestHandler>(UserController.prototype.changePassword)),
+
+            async function UserController_changePassword(request: ExRequest, response: ExResponse, next: any) {
+
+            // WARNING: This file was auto-generated with tsoa. Please do not modify it. Re-run tsoa to re-generate this file: https://github.com/lukeautry/tsoa
+
+            let validatedArgs: any[] = [];
+            try {
+                validatedArgs = templateService.getValidatedArgs({ args: argsUserController_changePassword, request, response });
+
+                const controller = new UserController();
+
+              await templateService.apiHandler({
+                methodName: 'changePassword',
                 controller,
                 response,
                 next,

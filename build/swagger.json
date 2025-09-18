@@ -277,7 +277,7 @@
 				"type": "object",
 				"additionalProperties": false
 			},
-			"ResponseHandler_Task_": {
+			"ResponseHandler_any_": {
 				"properties": {
 					"data": {},
 					"message": {
@@ -302,6 +302,47 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"ChangePasswordError": {
+				"properties": {
+					"message": {
+						"type": "string"
+					},
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {
+						"type": "string",
+						"enum": [
+							"fail",
+							"error"
+						]
+					}
+				},
+				"required": [
+					"message",
+					"statusCode",
+					"status"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"changePasswordDto": {
+				"properties": {
+					"oldPassword": {
+						"type": "string"
+					},
+					"newPassword": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"oldPassword",
+					"newPassword"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"GetTaskError": {
 				"properties": {
 					"message": {
@@ -314,6 +355,31 @@
 				},
 				"required": [
 					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ResponseHandler_Task_": {
+				"properties": {
+					"data": {},
+					"message": {
+						"type": "string"
+					},
+					"statusCode": {
+						"type": "number",
+						"format": "double"
+					},
+					"status": {},
+					"meta": {
+						"$ref": "#/components/schemas/Meta"
+					}
+				},
+				"required": [
+					"data",
+					"message",
+					"statusCode",
+					"status",
+					"meta"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -396,7 +462,7 @@
 				"operationId": "GetUser",
 				"responses": {
 					"200": {
-						"description": "fetch user successful",
+						"description": "fetch user succesful",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -427,6 +493,54 @@
 						}
 					}
 				]
+			}
+		},
+		"/user/{userId}/change-password": {
+			"patch": {
+				"operationId": "ChangePassword",
+				"responses": {
+					"200": {
+						"description": "Password changed successfully",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ResponseHandler_any_"
+								}
+							}
+						}
+					},
+					"default": {
+						"description": "user not found or invalid password",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/ChangePasswordError"
+								}
+							}
+						}
+					}
+				},
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "userId",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"$ref": "#/components/schemas/changePasswordDto"
+							}
+						}
+					}
+				}
 			}
 		},
 		"/team/{userId}": {

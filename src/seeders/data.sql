@@ -5,9 +5,9 @@ TRUNCATE TABLE "task", "team_membership", "role", "team", "user" RESTART IDENTIT
 INSERT INTO "user" (
   id, user_name, first_name, last_name, email, password, is_verified, is_active, is_staff, date_joined, "lastLogin"
 ) VALUES
-(uuid_generate_v4(), 'admin', 'System', 'Admin', 'admin@example.com', 'hashed_password_here', true, true, true, NOW(), NULL),
-(uuid_generate_v4(), 'jdoe', 'John', 'Doe', 'johndoe@example.com', 'hashed_password_here', true, true, false, NOW(), NULL),
-(uuid_generate_v4(), 'asmith', 'Alice', 'Smith', 'alicesmith@example.com', 'hashed_password_here', false, true, false, NOW(), NULL);
+(uuid_generate_v4(), 'admin', 'System', 'Admin', 'admin@example.com', '$2a$12$KTsyQk.yBtbyEwXTcvTjdOLWta7xfggCDpzzOWxnuEEeis1643.u2', true, true, true, NOW(), NULL),
+(uuid_generate_v4(), 'jdoe', 'John', 'Doe', 'johndoe@example.com', '$2a$12$2OaSjzFzIiYfSkjn6dv83OeYABhW0miGDAD8onKA.stAuzpPK6i/6', true, true, false, NOW(), NULL),
+(uuid_generate_v4(), 'asmith', 'Alice', 'Smith', 'alicesmith@example.com', '$2a$12$r8xAGk1PhYktDleoUwxwYOzwJZZtfTJ5gf0q8ASCqsPx.z8jG3i1.', false, true, false, NOW(), NULL);
 
 -- TEAMS
 INSERT INTO "team" (

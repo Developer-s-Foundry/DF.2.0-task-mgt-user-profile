@@ -6,3 +6,9 @@ export interface GetUserError {
 export interface GetTaskError {
   message: 'Task not found';
 }
+
+export interface ChangePasswordError {
+  message: string;
+  statusCode: number;
+  status: "fail" | "error";
+}

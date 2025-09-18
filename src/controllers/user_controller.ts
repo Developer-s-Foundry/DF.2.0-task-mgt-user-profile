@@ -11,9 +11,9 @@ import {
 } from "tsoa";
 import { User } from "../models/userModel";
 import { updateProfileDto } from "../dtos/user.dto";
-import { GetUserError } from "../dtos/error.dto";
+import { GetUserError, ChangePasswordError } from "../dtos/error.dto";
 import { ResponseHandler } from "../utils/response";
-import { ApiResponseUpdateUser } from "../dtos/user.dto";
+import { ApiResponseUpdateUser, changePasswordDto } from "../dtos/user.dto";
 
 @Route("/user")
 export class UserController extends Controller {
@@ -48,6 +48,27 @@ export class UserController extends Controller {
     const response = new ResponseHandler({
       data: user,
       message: "User profile successfully fetched",
+      statusCode: this.setStatus(200),
+      status: "success",
+    });
+
+    return response;
+  }
+  @Response<ChangePasswordError>(
+    "default",
+    "user not found or invalid password"
+  )
+  @SuccessResponse(200, "Password changed successfully")
+  @Patch("{userId}/change-password")
+  public async changePassword(
+    @Path() userId: string,
+    @Body() body: changePasswordDto
+  ) {
+    await this.userService.changeUserPassword(userId, body);
+
+    const response = new ResponseHandler({
+      data: null,
+      message: "Password updated successfully",
       statusCode: this.setStatus(200),
       status: "success",
     });
