@@ -286,6 +286,22 @@
 				"type": "object",
 				"additionalProperties": false
 			},
+			"GetTaskError": {
+				"properties": {
+					"message": {
+						"type": "string",
+						"enum": [
+							"Task not found"
+						],
+						"nullable": false
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
 			"ResponseHandler_Task_": {
 				"properties": {
 					"data": {},
@@ -307,22 +323,6 @@
 					"statusCode",
 					"status",
 					"meta"
-				],
-				"type": "object",
-				"additionalProperties": false
-			},
-			"GetTaskError": {
-				"properties": {
-					"message": {
-						"type": "string",
-						"enum": [
-							"Task not found"
-						],
-						"nullable": false
-					}
-				},
-				"required": [
-					"message"
 				],
 				"type": "object",
 				"additionalProperties": false
@@ -405,7 +405,7 @@
 				"operationId": "GetUser",
 				"responses": {
 					"200": {
-						"description": "fetch user successful",
+						"description": "fetch user succesful",
 						"content": {
 							"application/json": {
 								"schema": {
